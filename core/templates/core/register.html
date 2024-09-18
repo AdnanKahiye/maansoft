@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+
+<div class="max-w-lg my-6 mx-auto p-8 bg-white shadow-lg rounded-xl">
+    <h1 class="mb-6 text-3xl font-bold text-center">Sign Up</h1>
+    <form method="POST" class="space-y-6">
+        {% csrf_token %}
+        
+        <!-- First Name -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_first_name">First Name</label>
+            {{ form.first_name }}
+        </div>
+
+        <!-- Last Name -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_last_name">Last Name</label>
+            {{ form.last_name }}
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_email">Email</label>
+            {{ form.email }}
+        </div>
+
+        <!-- Phone Number -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_phone_number">Phone Number</label>
+            {{ form.phone_number }}
+        </div>
+
+        <!-- Username -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_username">Create Username</label>
+            {{ form.username }}
+        </div>
+
+        <!-- Password -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_password1">Password</label>
+            {{ form.password1 }}
+        </div>
+
+        <!-- Password Confirmation -->
+        <div class="flex flex-col">
+            <label class="text-sm font-medium text-gray-700" for="id_password2">Confirm Password</label>
+            {{ form.password2 }}
+        </div>
+
+        <!-- Display form errors -->
+        {% if form.errors or form.non_field_errors %}
+        <div class="mb-3 p-4 bg-red-100 text-red-600 rounded-lg">
+            {% for field in form %}
+                {% if field.errors %}
+                    <p>{{ field.errors }}</p>
+                {% endif %}
+            {% endfor %}
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-3 px-4 bg-[#232242] hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out">
+            Register
+        </button>
+    </form>
+</div>
+
+{% endblock %}

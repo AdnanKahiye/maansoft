@@ -1,0 +1,76 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+{% block content %}
+<div class="container mx-auto py-5">
+    <div class="flex flex-wrap bg-white rounded-lg shadow-lg p-8">
+        <!-- Left Column: Contact Info -->
+        <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
+            <h2 class="text-3xl font-bold text-[#232242] opacity-70  mb-4">Get in Touch with Us</h2> <!-- Changed to larger font and gold color -->
+            <p class="text-gray-500 mb-6">
+                Need help? Contact us below or fill out the form, and we'll be in touch soon
+            <!-- Image -->
+            <img src="{% static 'core/Images/side.png' %}" alt="Contact Us" class="w-full h-auto rounded-lg shadow-lg mb-6">
+            <!-- Contact Icons -->
+            <div class="space-y-4">
+                <div class="flex items-center text-gray-700">
+                    <i class="bi bi-geo-alt-fill text-green-500 text-xl mr-2"></i>
+                    <p class="text-md">Buulo xuubey , Moqdisho - Somalia </p>
+                </div>
+                <div class="flex items-center text-gray-700">
+                    <i class="bi bi-envelope-fill text-green-500 text-xl mr-2"></i>
+                    <p class="text-md">maansoft.so</p>
+                </div>
+                <div class="flex items-center text-gray-700">
+                    <i class="bi bi-telephone-fill text-green-500 text-xl mr-2"></i>
+                    <p class="text-md">123-456-789</p>
+                </div>
+            </div
+            
+            <!-- Social Media Icons -->
+            <div class="mt-6">
+                <p class="text-gray-500">Connect with us:</p>
+                <div class="flex space-x-4 mt-2">
+                    <a href="#" class="text-gray-500 hover:text-green-500">
+                        <i class="bi bi-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500">
+                        <i class="bi bi-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500">
+                        <i class="bi bi-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500">
+                        <i class="bi bi-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="w-full lg:w-1/2 px-4">
+            <h2 class="text-3xl font-bold text-[#232242] opacity-70  mb-4">Contact us</h2> <!-- Changed to larger font and gold color -->
+            <form class="p-6  rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+                    <input type="text" id="username" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter your full name">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="email" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter your email">
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Phone</label>
+                    <input type="text" id="phone" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter your phone number">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" rows="4" class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

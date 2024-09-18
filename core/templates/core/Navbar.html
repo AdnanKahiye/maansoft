@@ -1,0 +1,111 @@
+{% load static %}  
+
+<!-- base.html (or your specific template for the navbar) -->
+<nav class="bg-green-700 p-4 shadow-lg shadow-gray-700 fixed top-0 left-0 w-full z-50">
+  <div class="container mx-auto flex justify-between items-center">
+    
+    <!-- Logo aligned to the left -->
+    <div class="flex items-center space-x-2">
+      <a href="{% url 'core:index' %}" class="bg-green-700 rounded-full">
+        <img src="{% static 'core/Images/logos.png' %}" alt="MAANSOFT Logo" class="w-12 h-12 object-contain" />
+      </a>
+      <a href="{% url 'core:index' %}">
+        <span class="text-white font-bold text-xl">MAANSOFT INSTITUTE</span>
+      </a>
+    </div>
+
+    <!-- Centered menu items -->
+    <div class="hidden md:flex space-x-8 text-white font-medium mx-auto">
+      <a href="{% url 'core:training' %}" class="relative group">
+        <span class="transition-opacity duration-500 group-hover:opacity-70">Training</span>
+        <span class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full transform translate-y-1"></span>
+      </a>
+      <a href="{% url 'core:freeContent' %}" class="relative group">
+        <span class="transition-opacity duration-500 group-hover:opacity-70">Free Content</span>
+        <span class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full transform translate-y-1"></span>
+      </a>
+      <a href="#" class="relative group">
+        <span class="transition-opacity duration-500 group-hover:opacity-70">Blogs</span>
+        <span class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full transform translate-y-1"></span>
+      </a>
+      <a href="{% url 'core:contact' %}" class="relative group">
+        <span class="transition-opacity duration-500 group-hover:opacity-70">Contact Us</span>
+        <span class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full transform translate-y-1"></span>
+      </a>
+
+      {% if request.user.is_superuser %}
+      <a href="{% url 'dashboard:index' %}" class="relative group">
+          <span class="transition-opacity duration-500 group-hover:opacity-70">Dashboard</span>
+          <span class="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-500 group-hover:w-full transform translate-y-1"></span>
+      </a>
+  {% endif %}
+
+    
+
+    </div>
+
+    <!-- Login and Register aligned to the right with background styles -->
+    {% if request.user.is_authenticated %}
+    <div class="hidden md:flex items-center space-x-4 text-white font-medium">
+        <!-- Display username -->
+        <p class="text-lg">Hi, {{ request.user.username }}</p>
+
+        <!-- Logout Form -->
+        <form method="POST" action="{% url 'core:logout' %}" class="relative group">
+            {% csrf_token %}
+            <button type="submit" class="bg-white text-green-700 py-2 px-4 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
+                <span class="transition-opacity duration-500 group-hover:opacity-90">Logout</span>
+            </button>
+        </form>
+    </div>
+{% else %}
+    <div class="hidden md:flex items-center space-x-4 text-white font-medium">
+        <!-- Login Button -->
+        <a href="{% url 'core:login'  %}" class="relative group bg-white text-green-700 py-2 px-4 rounded-lg hover:bg-green-600 hover:text-white transition duration-300 ease-in-out">
+            <span class="transition-opacity duration-500 group-hover:opacity-90">Login</span>
+        </a>
+
+        <!-- Register Button -->
+        <a href="{% url 'core:register'  %}" class="relative group bg-yellow-500 text-green-700 py-2 px-4 rounded-lg hover:bg-yellow-600 hover:text-white transition duration-300 ease-in-out">
+            <span class="transition-opacity duration-500 group-hover:opacity-90">Register</span>
+        </a>
+    </div>
+{% endif %}
+
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden flex items-center">
+      <button class="outline-none mobile-menu-button" id="menu-btn">
+        <!-- Open Menu Icon -->
+        <i id="menu-open-icon" class="bi bi-list text-white" style="font-size: 1.5rem;"></i>
+        <!-- Close Menu Icon -->
+        <i id="menu-close-icon" class="bi bi-x-lg text-white hidden" style="font-size: 1.5rem;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden" id="mobile-menu">
+    <ul class="text-white font-medium space-y-2">
+      <li><a href="#" class="block px-4 py-2 hover:bg-green-600">Training</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-green-600">Free Content</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-green-600">About Us</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-green-600">Contact Us</a></li>
+      <li><a href="/login" class="block px-4 py-2 hover:bg-green-600">Login</a></li>
+      <li><a href="/register" class="block px-4 py-2 hover:bg-green-600">Register</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-open-icon');
+  const closeIcon = document.getElementById('menu-close-icon');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    openIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+  });
+</script>

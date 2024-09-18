@@ -1,0 +1,30 @@
+{% load static %}  
+
+<div class="flex flex-col lg:flex-row items-center justify-between p-8 my-16">
+    <div class="lg:w-1/2 text-left space-y-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-[#232242] opacity-80">
+        Hello World <span style='color:#00FF7F'>;</span>
+      </h1>
+      <div class="h-1 w-24 mb-4" style='background:#00FF7F'></div>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        Welcome to DotNetMastery, our mission is to provide the most comprehensive training for .NET Developers.
+      </p>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        We want to make coding and software engineering accessible to everyone through courses that are simple to follow, but still give exposure to solving real-world challenges. All the courses have real-world exposure to make sure, not just to teach you technology but to make you ready for real-world challenges.
+      </p>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        The most important part about writing and teaching code is to eliminate the hardships of every student out there who is willing to learn but cannot find adequate resources that are easy to understand.
+      </p>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Coding is a way to be creative and have fun!
+      </p>
+    </div>
+
+    <div class="lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+      <img 
+        src="{% static 'core/Images/side.png' %}"
+        alt="Coding Illustration" 
+        class="max-w-full h-auto"
+      />
+    </div>
+  </div>

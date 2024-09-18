@@ -1,0 +1,65 @@
+{% extends "core/base.html" %}
+{% load static %}  
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container mx-auto p-8">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">Courses</h1>
+        <!-- Add Course Button -->
+        <a href="{% url 'course:form' %}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+            <i class="bi bi-plus-circle"></i>  Add Course
+        </a>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full table-auto bg-white border border-gray-300">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b">Name</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b">Instructor</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b hidden lg:table-cell">Description</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b">Duration</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b">Price</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b hidden md:table-cell">Image</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-b">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr class="hover:bg-gray-100 transition-colors duration-200 ease-in-out">
+                    <td class="px-4 py-2 border-b">{{ course.name }}</td>
+                    <td class="px-4 py-2 border-b">{{ course.instructor.username }}</td> <!-- Assuming instructor is a ForeignKey to User -->
+                    <td class="px-4 py-2 border-b hidden lg:table-cell">{{ course.description|truncatewords:10 }}</td>
+                    <td class="px-4 py-2 border-b">{{ course.duration }}</td>
+                    <td class="px-4 py-2 border-b">${{ course.price }}</td>
+                    <td class="px-4 py-2 border-b hidden md:table-cell">
+                        {% if course.image %}
+                            <img src="{{ course.image.url }}" alt="Course Image" class="w-16 h-16 object-cover rounded-lg shadow-md">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <!-- Edit and Delete Buttons -->
+                    <td class="px-4 py-2 border-b flex space-x-2">
+                        <!-- Edit Button -->
+                        <a href="{% url 'course:edit' course.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+                            Edit
+                        </a>
+
+                        <!-- Delete Button -->
+                        <a href="{% url 'course:delete' course.id %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center px-4 py-2 border-b text-gray-500">No courses available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-gray-100">
+        <div class="p-4">
+            <h1 class="text-2xl font-bold text-white">Dashboard</h1>
+        </div>
+        <nav class="mt-10">
+            <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Overview</a>
+            <a href="{% url "course:lists" %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Courses</a>
+            <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Students</a>
+            <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Reports</a>
+            <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">Settings</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10">
+        <h2 class="text-3xl font-bold mb-6">Welcome to your Dashboard</h2>
+        <!-- Dashboard cards or content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Example Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Total Courses</h3>
+                <p class="text-3xl font-bold">25</p>
+            </div>
+
+            <!-- Example Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Total Students</h3>
+                <p class="text-3xl font-bold">150</p>
+            </div>
+
+            <!-- Example Card -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-4">Reports</h3>
+                <p class="text-3xl font-bold">10</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

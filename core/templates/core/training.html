@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800">Our Training Programs</h2>
+            <p class="text-lg text-gray-600 mt-2">Enhance your skills with our expert-led training courses</p>
+        </div>
+
+        <!-- Training Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Training Card 1 -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <img src="{% static 'path-to-image.jpg' %}" alt="Training Image" class="h-40 w-full object-cover rounded-t-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Full-Stack Web Development</h3>
+                <p class="text-gray-600 mt-2">
+                    Learn HTML, CSS, JavaScript, and back-end technologies to become a full-stack developer.
+                </p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-indigo-600 font-bold">Duration: 12 Weeks</span>
+                    <a href="/course-details" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Training Card 2 -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <img src="{% static 'path-to-image.jpg' %}" alt="Training Image" class="h-40 w-full object-cover rounded-t-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Data Science & Analytics</h3>
+                <p class="text-gray-600 mt-2">
+                    Dive into the world of data analysis, machine learning, and data visualization.
+                </p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-indigo-600 font-bold">Duration: 10 Weeks</span>
+                    <a href="/course-details" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Training Card 3 -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <img src="{% static 'path-to-image.jpg' %}" alt="Training Image" class="h-40 w-full object-cover rounded-t-lg">
+                <h3 class="text-xl font-semibold text-gray-800 mt-4">Cybersecurity Essentials</h3>
+                <p class="text-gray-600 mt-2">
+                    Learn how to protect networks, devices, and data from cyber-attacks.
+                </p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-indigo-600 font-bold">Duration: 8 Weeks</span>
+                    <a href="/course-details" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional Training Cards... -->
+        </div>
+    </div>
+</section>
+{% endblock %}
